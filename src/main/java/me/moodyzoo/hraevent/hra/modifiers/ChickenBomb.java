@@ -9,11 +9,18 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.ProjectileHitEvent;
 
+@ModAnnotation
 public class ChickenBomb extends BaseMod {
 
-    public ChickenBomb() {
-        super();
+    public void enable() {
+        super.enable();
+        // enable dingen
+    }
 
+    @Override
+    public void disable() {
+        super.disable();
+        // disable dingen
     }
 
     @EventHandler
