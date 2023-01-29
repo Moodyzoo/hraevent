@@ -1,0 +1,9 @@
+name: Hra
+version: '${project.version}'
+main: me.moodyzoo.hraevent.hra.Hra
+api-version: 1.19
+authors: [ Moodyzoo ]
+description: Rain eic event sen onme dit
+commands:
+  hra:
+    description: hra command ding
