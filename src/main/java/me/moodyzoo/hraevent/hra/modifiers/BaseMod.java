@@ -6,7 +6,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
-public abstract class BaseMod implements Listener {
+public abstract class BaseMod implements Listener, Mod {
+
+    public String name;
 
     public boolean isHond(Player player) {
         if (player.getName().contains("henRYANand")) {

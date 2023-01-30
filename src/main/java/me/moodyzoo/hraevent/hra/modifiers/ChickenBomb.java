@@ -9,8 +9,12 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 
-@Mod
+@RegisterMod
 public class ChickenBomb extends BaseMod {
+
+    public static String getName() {
+        return "kip";
+    }
 
     public void enable() {
         super.enable();

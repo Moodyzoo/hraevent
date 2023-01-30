@@ -1,15 +1,13 @@
 package me.moodyzoo.hraevent.hra.modifiers;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
+public interface Mod {
 
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+    void enable();
 
-@Target({ METHOD, TYPE })
-@Retention(RUNTIME)
-public @interface Mod {
+    void disable();
 
+    static String getName() {
+        return null;
+    }
 
 }

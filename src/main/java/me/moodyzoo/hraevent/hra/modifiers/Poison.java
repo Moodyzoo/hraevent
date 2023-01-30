@@ -1,20 +1,17 @@
 package me.moodyzoo.hraevent.hra.modifiers;
 
-import me.moodyzoo.hraevent.hra.Hra;
 import me.moodyzoo.hraevent.hra.tools.PlayerManager;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-@Mod
+@RegisterMod
 public class Poison extends BaseMod {
+
+    public static String getName() {
+        return "gif";
+    }
 
     public void enable() {
         super.enable();

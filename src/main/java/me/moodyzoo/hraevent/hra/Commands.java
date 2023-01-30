@@ -68,7 +68,7 @@ public class Commands implements CommandExecutor {
                             sender.sendMessage("/hra mods enable <mod>");
                             return true;
                         }
-                        mod = Hra.mods.get(args[2]);
+                        mod = Hra.mods.get(args[2].toLowerCase());
                         if (mod == null) {
                             sender.sendMessage("Deze mod bestaat niet");
                             return true;
@@ -77,7 +77,7 @@ public class Commands implements CommandExecutor {
                         try {
                             BaseMod enabledMod = mod.getConstructor().newInstance();
                             enabledMod.enable();
-                            Hra.enabledMods.put(args[2], enabledMod);
+                            Hra.enabledMods.put(args[2].toLowerCase(), enabledMod);
                             sender.sendMessage(args[2] + " is enabled");
                         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                                  NoSuchMethodException e) {
@@ -90,15 +90,15 @@ public class Commands implements CommandExecutor {
                             sender.sendMessage("/hra mods disable <mod>");
                             return true;
                         }
-                        mod = Hra.mods.get(args[2]);
+                        mod = Hra.mods.get(args[2].toLowerCase());
                         if (mod == null) {
                             sender.sendMessage("Deze mod bestaat niet");
                             return true;
                         }
 
-                        BaseMod enabledMod = Hra.enabledMods.get(args[2]);
+                        BaseMod enabledMod = Hra.enabledMods.get(args[2].toLowerCase());
                         enabledMod.disable();
-                        Hra.enabledMods.remove(args[2]);
+                        Hra.enabledMods.remove(args[2].toLowerCase());
 
                         sender.sendMessage(args[2] + " is disabled");
                         break;
