@@ -62,6 +62,7 @@ public class Commands implements CommandExecutor {
                     return true;
                 }
                 Class<? extends BaseMod> mod;
+                BaseMod enabledMod;
                 switch (args[1]) {
                     case "enable":
                         if (args.length != 3) {
@@ -74,8 +75,14 @@ public class Commands implements CommandExecutor {
                             return true;
                         }
 
+                        enabledMod = Hra.enabledMods.get(args[2].toLowerCase());
+                        if (enabledMod != null) {
+                            sender.sendMessage("Deze mod staat al aan");
+                            return true;
+                        }
+
                         try {
-                            BaseMod enabledMod = mod.getConstructor().newInstance();
+                            enabledMod = mod.getConstructor().newInstance();
                             enabledMod.enable();
                             Hra.enabledMods.put(args[2].toLowerCase(), enabledMod);
                             sender.sendMessage(args[2] + " is enabled");
@@ -96,7 +103,11 @@ public class Commands implements CommandExecutor {
                             return true;
                         }
 
-                        BaseMod enabledMod = Hra.enabledMods.get(args[2].toLowerCase());
+                        enabledMod = Hra.enabledMods.get(args[2].toLowerCase());
+                        if (enabledMod == null) {
+                            sender.sendMessage("Deze mod staat niet aan");
+                            return true;
+                        }
                         enabledMod.disable();
                         Hra.enabledMods.remove(args[2].toLowerCase());
 
