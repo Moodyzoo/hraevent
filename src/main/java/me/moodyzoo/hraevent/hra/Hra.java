@@ -1,19 +1,15 @@
 package me.moodyzoo.hraevent.hra;
 
 import me.moodyzoo.hraevent.hra.modifiers.BaseMod;
-import me.moodyzoo.hraevent.hra.modifiers.ModAnnotation;
+import me.moodyzoo.hraevent.hra.modifiers.Mod;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public final class Hra extends JavaPlugin {
 
@@ -50,7 +46,7 @@ public final class Hra extends JavaPlugin {
         Set<Class> modClasses = findAllModClasses();
         for (Class clazz : modClasses) {
             Bukkit.getConsoleSender().sendMessage(clazz.getSimpleName());
-            ModAnnotation classAnnotation = (ModAnnotation) clazz.getAnnotation(ModAnnotation.class);
+            Mod classAnnotation = (Mod) clazz.getAnnotation(Mod.class);
             if (classAnnotation != null) {
                 Hra.mods.put(clazz.getSimpleName(), clazz);
             }

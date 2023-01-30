@@ -9,7 +9,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.ProjectileHitEvent;
 
-@ModAnnotation
+@Mod
 public class ChickenBomb extends BaseMod {
 
     public void enable() {
