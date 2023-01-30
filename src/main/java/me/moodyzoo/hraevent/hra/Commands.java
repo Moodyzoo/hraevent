@@ -46,7 +46,8 @@ public class Commands implements CommandExecutor {
                 if (args.length == 1) {
                     StringBuilder stringToSend = new StringBuilder();
                     for (String mod : Hra.mods.keySet()) {
-                        stringToSend.append(mod).append(": ").append(Hra.enabledMods.get(mod) != null ? "Enabled" : "Disabled");
+                        stringToSend.append(mod).append(": ")
+                                .append(Hra.enabledMods.get(mod) != null ? ChatColor.GREEN+"Enabled" : ChatColor.RED+"Disabled");
                         stringToSend.append("\n");
                     }
                     sender.sendMessage(stringToSend.toString());
