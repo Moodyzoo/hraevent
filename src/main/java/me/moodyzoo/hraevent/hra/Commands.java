@@ -12,13 +12,21 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Map;
 
 public class Commands implements CommandExecutor {
 
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
                              @NotNull String[] args) {
         if (args.length == 0) {
+            sender.sendMessage("/hra toggle");
+            sender.sendMessage("/hra mods");
+            sender.sendMessage("/hra mods enable <mod>");
+            sender.sendMessage("/hra mods disable <mod>");
+            sender.sendMessage("/hra event settp");
+            sender.sendMessage("/hra event teleportplayers");
+            sender.sendMessage("/hra event list");
+            sender.sendMessage("/hra event list");
+            sender.sendMessage("/hra toggle");
             return true;
         }
 
@@ -46,7 +54,7 @@ public class Commands implements CommandExecutor {
                 if (args.length == 1) {
                     StringBuilder stringToSend = new StringBuilder();
                     for (String mod : Hra.mods.keySet()) {
-                        stringToSend.append(mod).append(": ")
+                        stringToSend.append(ChatColor.RESET + mod).append(": ")
                                 .append(Hra.enabledMods.get(mod) != null ? ChatColor.GREEN+"Enabled" : ChatColor.RED+"Disabled");
                         stringToSend.append("\n");
                     }
@@ -112,12 +120,22 @@ public class Commands implements CommandExecutor {
                         PlayerManager.addPlayers();
                         sender.sendMessage(Component.text(ChatColor.GREEN + "Players added"));
                         break;
+                    case "list":
+                        StringBuilder stringToSend = new StringBuilder();
+                        boolean first = true;
+                        for (Player eventPlayer : PlayerManager.getAlive()) {
+                            if (!first) {
+                                stringToSend.append(", ");
+                            } else {
+                                first = false;
+                            }
+                            stringToSend.append(eventPlayer.getName());
+                        }
+                        player.sendMessage(stringToSend.toString());
+                        break;
                 }
             }
 
             return true;
-            };
-
-
-
+    }
 }
