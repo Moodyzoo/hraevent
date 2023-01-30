@@ -71,13 +71,13 @@ public class Commands implements CommandExecutor {
                         }
                         mod = Hra.mods.get(args[2].toLowerCase());
                         if (mod == null) {
-                            sender.sendMessage("Deze mod bestaat niet");
+                            sender.sendMessage(ChatColor.RED+"Deze mod bestaat niet");
                             return true;
                         }
 
                         enabledMod = Hra.enabledMods.get(args[2].toLowerCase());
                         if (enabledMod != null) {
-                            sender.sendMessage("Deze mod staat al aan");
+                            sender.sendMessage(ChatColor.RED+"Deze mod staat al aan");
                             return true;
                         }
 
@@ -85,10 +85,10 @@ public class Commands implements CommandExecutor {
                             enabledMod = mod.getConstructor().newInstance();
                             enabledMod.enable();
                             Hra.enabledMods.put(args[2].toLowerCase(), enabledMod);
-                            sender.sendMessage(args[2] + " is enabled");
+                            sender.sendMessage(ChatColor.GREEN+args[2] + " is enabled");
                         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                                  NoSuchMethodException e) {
-                            sender.sendMessage("Er ging iets fout!!! Kijk de console!!!");
+                            sender.sendMessage(ChatColor.RED+"Er ging iets fout!!! Kijk de console!!!");
                             throw new RuntimeException(e);
                         }
                         break;
@@ -99,19 +99,19 @@ public class Commands implements CommandExecutor {
                         }
                         mod = Hra.mods.get(args[2].toLowerCase());
                         if (mod == null) {
-                            sender.sendMessage("Deze mod bestaat niet");
+                            sender.sendMessage(ChatColor.RED+"Deze mod bestaat niet");
                             return true;
                         }
 
                         enabledMod = Hra.enabledMods.get(args[2].toLowerCase());
                         if (enabledMod == null) {
-                            sender.sendMessage("Deze mod staat niet aan");
+                            sender.sendMessage(ChatColor.RED+"Deze mod staat niet aan");
                             return true;
                         }
                         enabledMod.disable();
                         Hra.enabledMods.remove(args[2].toLowerCase());
 
-                        sender.sendMessage(args[2] + " is disabled");
+                        sender.sendMessage(ChatColor.RED+args[2] + " is disabled");
                         break;
                 }
             }
