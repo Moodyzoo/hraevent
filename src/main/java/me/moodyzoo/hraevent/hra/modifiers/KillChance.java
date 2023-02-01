@@ -1,6 +1,7 @@
 package me.moodyzoo.hraevent.hra.modifiers;
 
 import me.moodyzoo.hraevent.hra.Hra;
+import me.moodyzoo.hraevent.hra.tools.PlayerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.*;
@@ -32,16 +33,17 @@ public class KillChance extends BaseMod {
     public void onPlayerAttacked(EntityDamageByEntityEvent e) {
         if(e.getEntity().getType() == EntityType.PLAYER) {
             Player player = e.getDamager().getType() == EntityType.PLAYER ? (Player) e.getDamager() : null;
-            if(Hra.inGame) {
+            Player target = e.getEntity().getType() == EntityType.PLAYER ? (Player) e.getEntity() : null;
+            if(PlayerManager.isInEvent(player) && PlayerManager.isInEvent(target)) {
                 //if player not has permission hra.slaan
-                if(!player.hasPermission("hra.slaan")) {
+                /*if(!player.hasPermission("hra.slaan")) {
                     return;
-                }
+                }*/
 
                 //get player who hit
 
                 //get player who got hit
-                Player target = e.getEntity().getType() == EntityType.PLAYER ? (Player) e.getEntity() : null;
+
 
                 //kill them both
 

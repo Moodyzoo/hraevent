@@ -49,7 +49,6 @@ public final class Hra extends JavaPlugin {
         for (Class clazz : modClasses) {
             RegisterMod classAnnotation = (RegisterMod) clazz.getAnnotation(RegisterMod.class);
             if (classAnnotation != null) {
-                Bukkit.getConsoleSender().sendMessage(clazz.getSimpleName());
                 try {
                     Method nameMethod = clazz.getDeclaredMethod("getName");
                     String name = (String) nameMethod.invoke(null);

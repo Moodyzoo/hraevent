@@ -24,7 +24,7 @@ public class Commands implements CommandExecutor {
             sender.sendMessage("/hra mods disable <mod>");
             sender.sendMessage("/hra event settp");
             sender.sendMessage("/hra event teleportplayers");
-            sender.sendMessage("/hra event list");
+            sender.sendMessage("/hra event start");
             sender.sendMessage("/hra event list");
             sender.sendMessage("/hra toggle");
             return true;

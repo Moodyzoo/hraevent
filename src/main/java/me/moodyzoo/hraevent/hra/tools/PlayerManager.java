@@ -41,6 +41,10 @@ public class PlayerManager {
         });
     }
 
+    public static boolean isInEvent(Player player) {
+        return alive.contains(player);
+    }
+
     public static List<Player> getAlive() {
         return alive;
     }
