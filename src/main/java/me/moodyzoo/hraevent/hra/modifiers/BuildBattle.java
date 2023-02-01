@@ -9,7 +9,7 @@ import org.bukkit.event.EventHandler;
 public class BuildBattle extends BaseMod {
 
     public static String getName() {
-        return "BuildBattle";
+        return "buildbattle";
     }
 
     public void enable() {
@@ -39,15 +39,37 @@ public class BuildBattle extends BaseMod {
         }
     }
 
-    //disable elytra flying
+    //disable ender eye throwing
     @EventHandler
-    public void onFly(org.bukkit.event.player.PlayerToggleFlightEvent event) {
-        if(event.getPlayer().isGliding()) {
+    public void onThrow(org.bukkit.event.player.PlayerInteractEvent event) {
+        if(event.getItem().getType() == Material.ENDER_EYE) {
+            event.setCancelled(true);
+        }
+    }
+
+    //disable ender chest opening
+    @EventHandler
+    public void onOpen(org.bukkit.event.inventory.InventoryOpenEvent event) {
+        if(event.getInventory().getType() == org.bukkit.event.inventory.InventoryType.ENDER_CHEST) {
+            event.setCancelled(true);
+        }
+    }
+
+
+
+
+
+    //disable elytra equip
+    @EventHandler
+    public void onEquip(org.bukkit.event.player.PlayerToggleFlightEvent event) {
+        if(event.getPlayer().getInventory().getChestplate().getType() == Material.ELYTRA) {
             event.setCancelled(true);
         }
     }
 
     //disable firework launching
+
+    //werkt niet ofzo
     @EventHandler
     public void onFirework(org.bukkit.event.player.PlayerInteractEvent event) {
         Player player = event.getPlayer();
@@ -55,6 +77,9 @@ public class BuildBattle extends BaseMod {
             return;
         }
         if(event.getItem().getType() == Material.FIREWORK_ROCKET) {
+            event.setCancelled(true);
+        }
+        if(event.getItem().getType() == Material.TRIDENT) {
             event.setCancelled(true);
         }
     }
