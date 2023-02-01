@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 
 public class Events implements Listener {
@@ -22,6 +23,11 @@ public class Events implements Listener {
         if(PlayerManager.getAlive().contains(e.getPlayer())) {
             PlayerManager.removePlayer(e.getPlayer());
         }
+    }
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent e) {
+        PlayerManager.removePlayer(e.getPlayer());
     }
 
 
